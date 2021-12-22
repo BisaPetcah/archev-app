@@ -60,12 +60,10 @@
             {{ __('Daftar') }}
         </x-jet-button>
 
-        <div class="mt-6 flex flex-col items-center text-sm">
-            <p>Sudah punya akun?
-                <a class="underline hover:text-gray-900 font-semibold" href="{{ route('login') }}">
-                    {{ __('Masuk') }}
-                </a>
-            </p>
-        </div>
+        <p class="text-center mt-6 text-gray-600 text-sm">Sudah punya akun? <a
+                class="underline hover:text-gray-900 font-semibold" href="{{ route('login') }}">
+                {{ __('Masuk disini') }}
+            </a>
+        </p>
     </form>
 </x-auth-layout>
