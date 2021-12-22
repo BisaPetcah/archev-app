@@ -8,30 +8,35 @@
             <x-jet-label for="name" value="{{ __('Nama') }}" />
             <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')"
                 placeholder="John Chena" required autofocus autocomplete="name" />
+            <x-jet-input-error for="name" />
         </div>
 
         <div class="mt-4">
             <x-jet-label for="username" value="{{ __('Nama Pengguna') }}" />
             <x-jet-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')"
                 placeholder="john123" required autofocus autocomplete="username" />
+            <x-jet-input-error for="username" />
         </div>
 
         <div class="mt-4">
             <x-jet-label for="email" value="{{ __('Email') }}" />
             <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
                 placeholder="john@example.com" required />
+            <x-jet-input-error for="email" />
         </div>
 
         <div class="mt-4">
             <x-jet-label for="password" value="{{ __('Kata Sandi') }}" />
             <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required
                 autocomplete="new-password" />
+            <x-jet-input-error for="password" />
         </div>
 
         <div class="mt-4">
             <x-jet-label for="password_confirmation" value="{{ __('Konfirmasi Kata Sandi') }}" />
             <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password"
                 name="password_confirmation" required autocomplete="new-password" />
+            <x-jet-input-error for="password_confirmation" />
         </div>
 
         @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
