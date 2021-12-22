@@ -12,7 +12,7 @@
 
                 <div class="mt-8">
 
-                    <a href="#"
+                    <a href="{{ route('auth.google') }}"
                         class="border-2 border-black hover:border-gray-300 hover:text-gray-300 flex justify-center content-center rounded-lg py-2 font-semibold"><img
                             src="{{ asset('icon/google.svg') }}" alt="google" width="20" class="mr-3"> Masuk
                         Dengan Google</a>
