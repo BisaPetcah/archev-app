@@ -52,7 +52,7 @@
         @endif
 
         <x-jet-button class="mt-6 w-full">
-            {{ __('Register') }}
+            {{ __('Daftar') }}
         </x-jet-button>
 
         <div class="mt-6 flex flex-col items-center text-sm">
