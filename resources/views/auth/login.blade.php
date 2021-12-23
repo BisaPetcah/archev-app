@@ -7,8 +7,8 @@
         @csrf
         <x-jet-validation-errors class="border-2 rounded-lg border-red py-2 px-4 text-sm text-gray-600 mb-3" />
         <div>
-            <x-jet-label for="identity" value="{{ __('Nama Pengguna') }}" />
-            <x-jet-input id="identity" class="block mt-1 w-full" type="text" name="identity" :value="old('identity')"
+            <x-jet-label for="email" value="{{ __('Nama Pengguna') }}" />
+            <x-jet-input id="email" class="block mt-1 w-full" type="text" name="email" :value="old('email')"
                 placeholder="Masukkan Email atau Nama Pengguna" required autofocus />
         </div>
 
