@@ -20,17 +20,16 @@ class AuthGoogleController extends Controller
         $data = [
             'name' => $callback->getName(),
             'email' => $callback->getEmail(),
-            'profile_photo_path' => $callback->getAvatar(),
+            'avatar_google' => $callback->getAvatar(),
             'email_verified_at' => date('Y-m-d H:i:s', time()),
         ];
 
         $user = User::firstOrCreate(['email' => $data['email']], $data);
 
         Auth::login($user, true);
-        if ($user->profile_photo_path == '') {
-            $user->profile_photo_path = $data['profile_photo_path'];
-            $user->save();
-        }
+
+        $user->avatar_google = $data['avatar_google'];
+        $user->save();
 
         return redirect()->route('dashboard');
     }

@@ -4,24 +4,32 @@
     </x-slot>
     <form method="POST" action="{{ route('register') }}">
         @csrf
-        <div>
-            <x-jet-label for="name" value="{{ __('Nama') }}" />
-            <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')"
-                placeholder="John Chena" required autofocus autocomplete="name" />
-            <x-jet-input-error for="name" />
+        <div class="flex justify-between space-x-4">
+            <div class="w-full">
+                <x-jet-label for="first_name" value="{{ __('Nama Depan') }}" />
+                <x-jet-input id="first_name" class="block mt-1" type="text" name="first_name"
+                    :value="old('first_name')" placeholder="Dewi" required autofocus autocomplete="first_name" />
+                <x-jet-input-error for="first_name" />
+            </div>
+            <div class="w-full">
+                <x-jet-label for="last_name" value="{{ __('Nama Belakang') }}" />
+                <x-jet-input id="last_name" class="block mt-1" type="text" name="last_name" :value="old('last_name')"
+                    placeholder="Sartika" required autofocus autocomplete="last_name" />
+                <x-jet-input-error for="last_name" />
+            </div>
         </div>
 
         <div class="mt-4">
             <x-jet-label for="username" value="{{ __('Nama Pengguna') }}" />
             <x-jet-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')"
-                placeholder="john123" required autofocus autocomplete="username" />
+                placeholder="dewi123" required autofocus autocomplete="username" />
             <x-jet-input-error for="username" />
         </div>
 
         <div class="mt-4">
             <x-jet-label for="email" value="{{ __('Email') }}" />
             <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
-                placeholder="john@example.com" required />
+                placeholder="dewi@email.com" required />
             <x-jet-input-error for="email" />
         </div>
 
