@@ -27,16 +27,12 @@ Route::get('/auth/google/callback', [AuthGoogleController::class, 'callback'])->
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', [RedirectDashboardController::class, 'redirect'])->name('dashboard');
 
-    Route::prefix('/admin')->group(function () {
-        Route::middleware('role:admin')->group(function () {
-            require_once __DIR__ . '/role/admin.php';
-        });
+    Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
+        require_once __DIR__ . '/role/admin.php';
     });
 
-    Route::prefix('/user')->group(function () {
-        Route::middleware('role:user')->group(function () {
-            require_once __DIR__ . '/role/user.php';
-        });
+    Route::group(['middleware' => 'role:user', 'prefix' => 'user', 'as' => 'user.'], function () {
+        require_once __DIR__ . '/role/user.php';
     });
 });
 
