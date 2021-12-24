@@ -26,6 +26,18 @@ Route::get('/auth/google/callback', [AuthGoogleController::class, 'callback'])->
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', [RedirectDashboardController::class, 'redirect'])->name('dashboard');
+    Route::get('/anggota', function () {
+        return view('dashboard');
+    })->name('anggota');
+    Route::get('/anggota/aktif', function () {
+        return view('dashboard');
+    })->name('anggota.aktif');
+    Route::get('/anggota/pasif', function () {
+        return view('dashboard');
+    })->name('anggota.pasif');
+    Route::get('/divisi', function () {
+        return view('dashboard');
+    })->name('divisi');
 
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
         require_once __DIR__ . '/role/admin.php';
