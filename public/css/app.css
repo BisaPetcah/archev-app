@@ -1071,6 +1071,10 @@ select{
   grid-column: span 6 / span 6;
 }
 
+.m-auto{
+  margin: auto;
+}
+
 .mx-auto{
   margin-left: auto;
   margin-right: auto;
@@ -1203,6 +1207,30 @@ select{
 
 .mr-10{
   margin-right: 2.5rem;
+}
+
+.ml-auto{
+  margin-left: auto;
+}
+
+.ml-10{
+  margin-left: 2.5rem;
+}
+
+.ml-44{
+  margin-left: 11rem;
+}
+
+.ml-20{
+  margin-left: 5rem;
+}
+
+.ml-16{
+  margin-left: 4rem;
+}
+
+.mr-auto{
+  margin-right: auto;
 }
 
 .block{
