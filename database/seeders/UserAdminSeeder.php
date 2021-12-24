@@ -21,7 +21,6 @@ class UserAdminSeeder extends Seeder
             'is_admin' => true,
             'password' => Hash::make('admin'),
             'email' => 'admin@email.com',
-            'profile_photo_path' => 'https://ui-avatars.com/api/?name=Admin&color=7F9CF5&background=EBF4FF'
         ]);
     }
 }

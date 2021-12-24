@@ -20,20 +20,21 @@ class UpdateUserPassword implements UpdatesUserPasswords
      */
     public function update($user, array $input)
     {
-        if (Auth::user()->password) {
-            Validator::make($input, [
-                'current_password' => ['required', 'string'],
-                'password' => $this->passwordRules(),
-            ])->after(function ($validator) use ($user, $input) {
-                if (!isset($input['current_password']) || !Hash::check($input['current_password'], $user->password)) {
-                    $validator->errors()->add('current_password', __('The provided password does not match your current password.'));
-                }
-            })->validateWithBag('updatePassword');
-        } else {
-            Validator::make($input, [
-                'password' => $this->passwordRules(),
-            ])->validateWithBag('updatePassword');
+        $validated['password'] = $this->passwordRules();
+        if (!Auth::user()->is_auth_google) {
+            $validated['current_password'] = ['required', 'string'];
         }
+        Validator::make(
+            $input,
+            $validated
+        )->after(function ($validator) use ($user, $input) {
+            if (Auth::user()->is_auth_google) {
+                $input['current_password'] = '123';
+            }
+            if (!isset($input['current_password']) || !Hash::check($input['current_password'], $user->password)) {
+                $validator->errors()->add('current_password', __('The provided password does not match your current password.'));
+            }
+        })->validateWithBag('updatePassword');
 
         $user->forceFill([
             'password' => Hash::make($input['password']),
