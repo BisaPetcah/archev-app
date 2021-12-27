@@ -1,6 +1,6 @@
 <x-main-layout>
     <x-slot name="title">
-        Dashboard
+        Divisi
     </x-slot>
-    
+
 </x-main-layout>

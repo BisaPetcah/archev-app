@@ -28,24 +28,17 @@
     <div class="flex flex-row h-screen">
         @livewire('component.sidebar')
         <div class="basis-4/5">
-            <main class="bg-white-100 h-screen px-24 container">
+            <main class="bg-white-100 h-screen px-16 container py-3">
                 <x-jet-banner />
+                <x-topbar>
+                    <x-slot name="title">
+                        {{ $title }}
+                    </x-slot>
+                </x-topbar>
                 {{ $slot }}
             </main>
         </div>
     </div>
-
-    <!-- Page Heading -->
-    {{-- @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif --}}
-
-    <!-- Page Content -->
-
 
     @stack('modals')
 
