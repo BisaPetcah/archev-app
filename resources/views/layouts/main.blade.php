@@ -25,9 +25,9 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="flex flex-row h-screen">
+    <div class="flex h-screen w-full lg:mx-auto">
         @livewire('component.sidebar')
-        <div class="basis-4/5">
+        <div class="basis-4/5 w-full">
             <main class="bg-white-100 h-screen px-16 container py-3">
                 <x-jet-banner />
                 <x-topbar>
