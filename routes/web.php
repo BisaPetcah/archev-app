@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnggotaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthGoogleController;
 
@@ -25,9 +26,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::get('/anggota', function () {
-        return view('anggota');
-    })->name('anggota');
+    Route::get('/anggota', [AnggotaController::class, 'all'])->name('anggota');
     Route::get('/anggota/aktif', function () {
         return view('anggota');
     })->name('anggota.aktif');
