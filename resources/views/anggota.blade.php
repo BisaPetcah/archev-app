@@ -23,6 +23,10 @@
                 <tr>
                     <td>{{++$i}}</td>
                     <td>{{ $anggota->name }}</td>
+                    <td>{{ $anggota->email }}</td>
+                    <td>{{ $anggota->division->name }}</td>
+                    <td>{{ $anggota->generation->name }}</td>
+                    <td>{{ $anggota->status }}</td>
                 </tr>
                 @endforeach
             </tbody>
