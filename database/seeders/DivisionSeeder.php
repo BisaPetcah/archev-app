@@ -15,23 +15,33 @@ class DivisionSeeder extends Seeder
     public function run()
     {
         Division::create([
-            'name' => 'Web'
+            'name' => 'Web',
+            'slug' => 'web',
+            'icon_name' => 'web.svg',
         ]);
 
         Division::create([
-            'name' => 'Android'
+            'name' => 'Android',
+            'slug' => 'android',
+            'icon_name' => 'android.svg'
         ]);
 
         Division::create([
-            'name' => 'Game'
+            'name' => 'Game',
+            'slug' => 'game',
+            'icon_name' => 'game.svg'
         ]);
 
         Division::create([
-            'name' => 'Startup and Competition'
+            'name' => 'Startup and Competition',
+            'slug' => 'startup-and-competition',
+            'icon_name' => 'startup.svg'
         ]);
 
         Division::create([
-            'name' => 'UI/UX'
+            'name' => 'UI/UX',
+            'slug' => 'ui-ux',
+            'icon_name' => 'uiux.svg'
         ]);
     }
 }

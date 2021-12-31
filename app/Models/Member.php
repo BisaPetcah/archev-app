@@ -9,6 +9,11 @@ class Member extends Model
 {
     use HasFactory;
 
+    protected $fillable = [];
+
+    // protected $with = ['division', 'generation'];
+
+
     public function division()
     {
         return $this->belongsTo(Division::class);
