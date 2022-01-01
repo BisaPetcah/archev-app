@@ -12,8 +12,8 @@ class DashboardController extends Controller
     {
         return view('dashboard', [
             'totalAnggota' => Member::count(),
-            'totalAnggotaAktif' => Member::where('status', 'ACTIVE')->count(),
-            'totalAnggotaPasif' => Member::where('status', 'PASSIVE')->count(),
+            'totalAnggotaAktif' => Member::where('status', 'aktif')->count(),
+            'totalAnggotaPasif' => Member::where('status', 'pasif')->count(),
             'totalDivisi' => Division::count(),
         ]);
     }

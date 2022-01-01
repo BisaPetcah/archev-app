@@ -2,8 +2,8 @@
     <x-slot name="title">
         Anggota
     </x-slot>
-    <div class="mt-4">
-        <table class="bg-white-900 rounded-xl shadow-lg text-center py-4" id="myTable">
+    <div class="mt-4 bg-white-900 rounded-xl shadow-lg text-center p-4">
+        <table id="table-anggota">
             <thead>
                 <tr>
                     <th>No</th>
@@ -12,31 +12,62 @@
                     <th>Divisi</th>
                     <th>Angkatan</th>
                     <th>Status</th>
-                    <th></th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
-            <tbody>
-                @php
-                $i = 0;
-                @endphp
-                @foreach ($dataAnggota as $anggota)
-                <tr>
-                    <td>{{++$i}}</td>
-                    <td>{{ $anggota->name }}</td>
-                    <td>{{ $anggota->email }}</td>
-                    <td>{{ $anggota->division->name }}</td>
-                    <td>{{ $anggota->generation->name }}</td>
-                    <td>{{ $anggota->status }}</td>
-                </tr>
-                @endforeach
-            </tbody>
         </table>
     </div>
-    @section('js')
-    <script type="text/javascript">
-        $(document).ready( function () {
-            $('#myTable').DataTable();
-        });
-    </script>
-    @endsection
+    @push('js')
+        @php
+            $url = '';
+            $routes = ['anggota', 'anggota.aktif', 'anggota.pasif'];
+            foreach ($routes as $route) {
+                if (Route::is($route)) {
+                    $url = route($route);
+                }
+            }
+        @endphp
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#table-anggota').DataTable({
+                    serverside: true,
+                    responsive: true,
+                    ajax: {
+                        url: "{{ $url }}"
+                    },
+                    columns: [{
+                            data: 'id',
+                            name: 'id'
+                        },
+                        {
+                            data: 'name',
+                            name: 'name'
+                        },
+                        {
+                            data: 'email',
+                            name: 'email'
+                        },
+                        {
+                            data: 'divisi',
+                            name: 'divisi'
+                        },
+                        {
+                            data: 'angkatan',
+                            name: 'angkatan'
+                        },
+                        {
+                            data: 'status',
+                            name: 'status'
+                        },
+                        {
+                            data: 'aksi',
+                            name: 'aksi',
+                            orderable: false,
+                            searchable: false
+                        },
+                    ]
+                });
+            });
+        </script>
+    @endpush
 </x-main-layout>

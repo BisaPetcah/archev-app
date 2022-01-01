@@ -26,6 +26,7 @@
         table.dataTable.no-footer {
             border-bottom: none;
         }
+
     </style>
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
@@ -53,7 +54,7 @@
     @livewireScripts
     <script type="text/javascript"
         src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/cr-1.5.5/sb-1.3.0/sp-1.4.0/datatables.min.js"></script>
-    @yield('js')
+    @stack('js')
 </body>
 
 </html>
