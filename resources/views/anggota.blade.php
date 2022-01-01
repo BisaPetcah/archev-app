@@ -3,16 +3,15 @@
         Anggota
     </x-slot>
     <div class="mt-4 bg-white-900 rounded-xl shadow-lg text-center p-4">
-        <table id="table-anggota">
+        <table class="compact stripe" id="table-anggota">
             <thead>
                 <tr>
                     <th>No</th>
                     <th>Nama</th>
-                    <th>Email</th>
-                    <th>Divisi</th>
+                    <th class="w-10">Divisi</th>
                     <th>Angkatan</th>
                     <th>Status</th>
-                    <th>Aksi</th>
+                    <th class="w-32">Aksi</th>
                 </tr>
             </thead>
         </table>
@@ -36,16 +35,14 @@
                         url: "{{ $url }}"
                     },
                     columns: [{
-                            data: 'id',
-                            name: 'id'
+                            "data": "id",
+                            render: function(data, type, row, meta) {
+                                return meta.row + meta.settings._iDisplayStart + 1;
+                            }
                         },
                         {
                             data: 'name',
                             name: 'name'
-                        },
-                        {
-                            data: 'email',
-                            name: 'email'
                         },
                         {
                             data: 'divisi',

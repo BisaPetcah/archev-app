@@ -1343,6 +1343,30 @@ select{
   width: 8rem;
 }
 
+.w-36{
+  width: 9rem;
+}
+
+.w-1{
+  width: 0.25rem;
+}
+
+.w-24{
+  width: 6rem;
+}
+
+.w-2{
+  width: 0.5rem;
+}
+
+.w-28{
+  width: 7rem;
+}
+
+.w-3{
+  width: 0.75rem;
+}
+
 .min-w-0{
   min-width: 0px;
 }
@@ -1361,6 +1385,10 @@ select{
 
 .max-w-6xl{
   max-width: 72rem;
+}
+
+.max-w-0{
+  max-width: 0rem;
 }
 
 .flex-1{
@@ -1479,6 +1507,10 @@ select{
 
 .justify-between{
   justify-content: space-between;
+}
+
+.justify-evenly{
+  justify-content: space-evenly;
 }
 
 .gap-6{
@@ -2627,6 +2659,30 @@ select{
 
   .sm\:w-64{
     width: 16rem;
+  }
+
+  .sm\:w-36{
+    width: 9rem;
+  }
+
+  .sm\:w-2{
+    width: 0.5rem;
+  }
+
+  .sm\:w-24{
+    width: 6rem;
+  }
+
+  .sm\:w-28{
+    width: 7rem;
+  }
+
+  .sm\:w-3{
+    width: 0.75rem;
+  }
+
+  .sm\:w-32{
+    width: 8rem;
   }
 
   .sm\:max-w-md{
