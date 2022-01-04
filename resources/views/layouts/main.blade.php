@@ -34,7 +34,7 @@
 
 <body class="font-sans antialiased">
     <div class="flex min-h-screen w-full lg:mx-auto">
-        @livewire('component.sidebar')
+        <x-sidebar />
         <div class="basis-4/5 w-full">
             <main class="bg-white-100 min-h-screen px-16 container py-3">
                 <x-jet-banner />

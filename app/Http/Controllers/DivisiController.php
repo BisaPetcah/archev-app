@@ -11,12 +11,12 @@ class DivisiController extends Controller
     public function show(Request $request)
     {
         return view('divisi', [
-            'listDivisi' => Division::all(),
+            'listDivisi' => Division::with('members')->get(),
         ]);
     }
 
     public function detail(Request $request, Division $divisi)
     {
-        return $divisi;
+        return $divisi->load('members');
     }
 }

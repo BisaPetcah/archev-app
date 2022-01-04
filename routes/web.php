@@ -32,13 +32,13 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/divisi', [DivisiController::class, 'show'])->name('divisi');
     Route::get('/divisi/detail/{divisi:slug}', [DivisiController::class, 'detail'])->name('divisi.detail');
 
-    Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
-        require_once __DIR__ . '/role/admin.php';
-    });
+    // Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
+    //     require_once __DIR__ . '/role/admin.php';
+    // });
 
-    Route::group(['middleware' => 'role:user', 'prefix' => 'user', 'as' => 'user.'], function () {
-        require_once __DIR__ . '/role/user.php';
-    });
+    // Route::group(['middleware' => 'role:user', 'prefix' => 'user', 'as' => 'user.'], function () {
+    //     require_once __DIR__ . '/role/user.php';
+    // });
 });
 
 require_once __DIR__ . '/jetstream.php';
