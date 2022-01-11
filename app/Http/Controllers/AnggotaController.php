@@ -75,7 +75,8 @@ class AnggotaController extends Controller
 
         Member::create($validated);
 
-        return redirect()->back()->with('success', 'Anggota berhasil ditambahkan');
+        notify()->success('Anggota berhasil ditambahkan');
+        return redirect()->back();
     }
 
     public function edit(Request $request, Member $member)
@@ -105,14 +106,16 @@ class AnggotaController extends Controller
 
         $member->update($validated);
 
-        return redirect()->back()->with('success', 'Berhasil edit anggota');
+        notify()->success('Berhasil edit anggota');
+        return redirect()->back();
     }
 
     public function destroy(Request $request, Member $member)
     {
         $member->delete();
 
-        return redirect()->back()->with('success', 'data berhasil terhapus');
+        notify()->success('data berhasil dihapus');
+        return redirect()->back();
     }
 
     private function dataTableMember($dataAnggota)
@@ -123,6 +126,9 @@ class AnggotaController extends Controller
             })
             ->addColumn('angkatan', function ($dataAnggota) {
                 return $dataAnggota->generation->name;
+            })
+            ->addColumn('status', function ($dataAnggota) {
+                return ucwords($dataAnggota->status);
             })
             ->addColumn('aksi', function ($dataAnggota) {
                 return view('components.action-button', ['data' => $dataAnggota]);
