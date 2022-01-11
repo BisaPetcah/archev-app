@@ -4,7 +4,7 @@
     </x-slot>
     <div class="container px-10 flex flex-row w-full justify-between space-x-10 mt-10">
         <div class="bg-white-900 w-full rounded-lg shadow-lg flex flex-col items-center">
-            <img src="{{ $user->profile_photo_path ?? 'https://ui-avatars.com/api/?name=' . urlencode($user->name) . '&color=7F9CF5&background=EBF4FF' }}"
+            <img src="{{ $user->profile_photo_path ? asset('storage/' . $user->profile_photo_path) : 'https://ui-avatars.com/api/?name=' . urlencode($user->name) . '&color=7F9CF5&background=EBF4FF' }}"
                 alt="" class="rounded-full w-24 my-7">
             <div class="border-2 w-full"></div>
             <div class="w-full px-10 py-5">
