@@ -20,6 +20,11 @@ class AnggotaController extends Controller
         return view('anggota');
     }
 
+    public function detail(Request $request, Member $member)
+    {
+        return $member;
+    }
+
     public function active(Request $request)
     {
         $dataAnggota = Member::where('status', 'aktif')->with(['division', 'generation']);
@@ -75,12 +80,32 @@ class AnggotaController extends Controller
 
     public function edit(Request $request, Member $member)
     {
-        return $member;
+        return view('anggota.edit', [
+            'data' => $member,
+            'generations' => Generation::all(),
+            'divisions' => Division::all(),
+        ]);
     }
 
     public function update(Request $request, Member $member)
     {
-        return $member;
+        $validated = $request->validate([
+            'name' => 'string',
+            'email' => 'email:dns|unique:members,email,' . $member->id,
+            'foto' => 'image|file|max:1024',
+            'generation_id' => 'numeric',
+            'status' => 'in:aktif,pasif',
+            'division_id' => 'numeric'
+        ]);
+
+        $foto = $request->file('foto');
+        if ($foto) {
+            $validated['photo_path'] = $foto->store('member-photo');
+        }
+
+        $member->update($validated);
+
+        return redirect()->back()->with('success', 'Berhasil edit anggota');
     }
 
     public function destroy(Request $request, Member $member)

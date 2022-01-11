@@ -1318,6 +1318,18 @@ select{
   height: 12rem;
 }
 
+.h-24{
+  height: 6rem;
+}
+
+.h-14{
+  height: 3.5rem;
+}
+
+.h-1{
+  height: 0.25rem;
+}
+
 .min-h-screen{
   min-height: 100vh;
 }
@@ -2025,6 +2037,11 @@ select{
   padding-right: 2.5rem;
 }
 
+.py-20{
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
 .pt-6{
   padding-top: 1.5rem;
 }
@@ -2415,6 +2432,10 @@ select{
 
 .duration-100{
   transition-duration: 100ms;
+}
+
+.duration-500{
+  transition-duration: 500ms;
 }
 
 .ease-in-out{

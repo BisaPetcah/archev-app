@@ -39,6 +39,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::delete('/{member}', [AnggotaController::class, 'destroy'])->name('delete');
         Route::get('/aktif', [AnggotaController::class, 'active'])->name('aktif');
         Route::get('/pasif', [AnggotaController::class, 'passive'])->name('pasif');
+        Route::get('/{member}', [AnggotaController::class, 'detail'])->name('detail');
     });
 
     // Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {

@@ -2,9 +2,9 @@
     <x-slot name="title">
         Anggota
     </x-slot>
-    <div class="flex flex-row mt-8 items-center h-8">
+    <div class="flex flex-row mt-8 items-center h-12">
         <a href="{{ route('anggota.create') }}"
-            class="bg-orange-400 text-white-900 rounded-lg px-5 text-sm h-full items-center flex"><i
+            class="bg-orange-400 text-white-900 rounded-lg px-5 text-sm h-full items-center flex shadow-md hover:shadow-none transform duration-300"><i
                 class="fas fa-plus mr-2"></i>Tambah
             Anggota</a>
     </div>
