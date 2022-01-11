@@ -17,6 +17,10 @@ class DivisiController extends Controller
 
     public function detail(Request $request, Division $divisi)
     {
-        return $divisi->load('members');
+        $divisi = $divisi->load('members');
+
+        return view('divisi.detail', [
+            'divisi' => $divisi
+        ]);
     }
 }

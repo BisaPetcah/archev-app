@@ -2,6 +2,12 @@
     <x-slot name="title">
         Anggota
     </x-slot>
+    <div class="flex flex-row mt-8 items-center h-8">
+        <a href="{{ route('anggota.create') }}"
+            class="bg-orange-400 text-white-900 rounded-lg px-5 text-sm h-full items-center flex"><i
+                class="fas fa-plus mr-2"></i>Tambah
+            Anggota</a>
+    </div>
     <div class="mt-4 bg-white-900 rounded-xl shadow-lg text-center p-4">
         <table class="compact stripe" id="table-anggota">
             <thead>

@@ -9,7 +9,15 @@ class Member extends Model
 {
     use HasFactory;
 
-    protected $fillable = [];
+    protected $fillable = [
+        'name',
+        'email',
+        'status',
+        'photo_path',
+        'division_id',
+        'generation_id',
+        'user_id'
+    ];
 
     // protected $with = ['division', 'generation'];
 
