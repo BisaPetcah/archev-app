@@ -57,6 +57,14 @@
                             autocomplete="new-password" />
                         <x-jet-input-error for="password" />
                     </div>
+
+                    <div class="mt-4">
+                        <x-jet-label for="password_confirmation" value="{{ __('Konfirmasi Kata Sandi') }}" />
+                        <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password"
+                            name="password_confirmation" required autocomplete="new-password" />
+                        <x-jet-input-error for="password_confirmation" />
+                    </div>
+
                     <x-jet-button class="my-6 w-full">
                         {{ __('Simpan') }}
                     </x-jet-button>
