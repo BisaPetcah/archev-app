@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\AnggotaController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthGoogleController;
+use App\Http\Controllers\DivisiController;
+use App\Models\Member;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,29 +26,29 @@ Route::get('/google/sign-in', [AuthGoogleController::class, 'auth'])->name('auth
 Route::get('/auth/google/callback', [AuthGoogleController::class, 'callback'])->name('auth.google.callback');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-    Route::get('/anggota', function () {
-        return view('anggota');
-    })->name('anggota');
-    Route::get('/anggota/aktif', function () {
-        return view('anggota');
-    })->name('anggota.aktif');
-    Route::get('/anggota/pasif', function () {
-        return view('anggota');
-    })->name('anggota.pasif');
-    Route::get('/divisi', function () {
-        return view('divisi');
-    })->name('divisi');
+    Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
+    Route::get('/anggota', [AnggotaController::class, 'all'])->name('anggota');
+    Route::get('/divisi', [DivisiController::class, 'show'])->name('divisi');
+    Route::get('/divisi/{divisi:slug}', [DivisiController::class, 'detail'])->name('divisi.detail');
 
-    Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
-        require_once __DIR__ . '/role/admin.php';
+    Route::group(['prefix' => 'anggota', 'as' => 'anggota.'], function () {
+        Route::post('/', [AnggotaController::class, 'store'])->name('store');
+        Route::get('/tambah', [AnggotaController::class, 'create'])->name('create');
+        Route::get('/edit/{member}', [AnggotaController::class, 'edit'])->name('edit');
+        Route::put('/{member}', [AnggotaController::class, 'update'])->name('update');
+        Route::delete('/{member}', [AnggotaController::class, 'destroy'])->name('delete');
+        Route::get('/aktif', [AnggotaController::class, 'active'])->name('aktif');
+        Route::get('/pasif', [AnggotaController::class, 'passive'])->name('pasif');
+        Route::get('/{member}', [AnggotaController::class, 'detail'])->name('detail');
     });
 
-    Route::group(['middleware' => 'role:user', 'prefix' => 'user', 'as' => 'user.'], function () {
-        require_once __DIR__ . '/role/user.php';
-    });
+    // Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
+    //     require_once __DIR__ . '/role/admin.php';
+    // });
+
+    // Route::group(['middleware' => 'role:user', 'prefix' => 'user', 'as' => 'user.'], function () {
+    //     require_once __DIR__ . '/role/user.php';
+    // });
 });
 
 require_once __DIR__ . '/jetstream.php';

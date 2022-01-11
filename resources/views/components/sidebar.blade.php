@@ -34,9 +34,9 @@ $menus = [
     <ul class="px-3">
         @foreach ($menus as $menu)
             <li
-                class="w-full h-full rounded-sm hover:bg-orange-900 hover:text-orange-600 @if (Route::is($menu['route']))
-                bg-orange-900 text-orange-600 transition
-            @endif  my-4">
+                class="w-full h-full rounded-sm @if (Route::is($menu['route']))
+                bg-orange-900 text-orange-600 @else hover:bg-orange-900 hover:text-orange-600 transition-all duration-100
+            @endif  my-4 ">
                 <a href="{{ route($menu['route']) }}" class="block px-4 py-2"><i
                         class="{{ $menu['icon'] }} mr-10"></i>{{ $menu['name'] }}</a>
             </li>
