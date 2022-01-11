@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
     <!-- Styles -->
+    @notifyCss
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
     @livewireStyles
@@ -48,12 +49,14 @@
         </div>
     </div>
 
+    <x:notify-messages />
     @stack('modals')
+    @notifyJs
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
         integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-    @livewireScripts
     <script type="text/javascript"
         src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/cr-1.5.5/sb-1.3.0/sp-1.4.0/datatables.min.js"></script>
+    @livewireScripts
     @stack('js')
 </body>
 

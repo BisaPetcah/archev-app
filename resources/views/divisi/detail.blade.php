@@ -2,9 +2,9 @@
     <x-slot name="title">
         Divisi {{ $divisi->name }}
     </x-slot>
-    <div class="container px-10">
-        <div class="flex flex-wrap justify-between">
-            @foreach ($divisi->members as $data)
+    <div class="container px-10 mb-5">
+        <div class="flex flex-wrap justify-between mb-5">
+            @foreach ($members as $data)
                 <a href="{{ route('anggota.detail', ['member' => $data->id]) }}" class="block mx-auto">
                     <div
                         class="flex flex-col justify-center items-center px-10 rounded-lg w-64 h-48 mt-6 bg-white-900 hover:border-orange-400 hover:shadow-none border-2 border-gray-400 transition-all duration-200 shadow-lg">
@@ -16,5 +16,6 @@
                 </a>
             @endforeach
         </div>
+        {{ $members->links() }}
     </div>
 </x-main-layout>

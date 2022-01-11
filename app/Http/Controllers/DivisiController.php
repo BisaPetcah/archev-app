@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Division;
+use App\Models\Member;
 use App\View\Components\divisi;
 use Illuminate\Http\Request;
 
@@ -17,10 +18,11 @@ class DivisiController extends Controller
 
     public function detail(Request $request, Division $divisi)
     {
-        $divisi = $divisi->load('members');
+        $members = Member::where('division_id', $divisi->id)->paginate(9);
 
         return view('divisi.detail', [
-            'divisi' => $divisi
+            'divisi' => $divisi,
+            'members' => $members,
         ]);
     }
 }

@@ -70,7 +70,8 @@
             <div class="mt-4 flex flex-row">
                 <x-jet-label for="foto" value="{{ __('Foto') }}" class="w-56" />
                 <div class="w-full mt-1">
-                    <x-jet-input id="foto" type="file" name="foto" required />
+                    <img id="foto-preview">
+                    <x-jet-input id="foto" type="file" name="foto" required onchange="previewImage()" />
                     <x-jet-input-error for="foto" />
                 </div>
             </div>
@@ -82,4 +83,22 @@
             </div>
         </form>
     </div>
+
+    @push('js')
+        <script>
+            function previewImage() {
+                const fotoPreview = document.getElementById('img-preview')
+                const foto = document.getElementById('foto')
+
+                fotoPreview.classList.add('block')
+
+                const oFReader = new FileReader()
+                oFReader.readAsDataURL(foto.files[0])
+
+                oFReader.onload = function(oFREvent) {
+                    fotoPreview.src == oFREvent.target.result
+                }
+            }
+        </script>
+    @endpush
 </x-main-layout>
