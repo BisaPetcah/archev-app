@@ -78,8 +78,20 @@
             <div class="flex flex-row mt-3 justify-end w-full">
                 <button type="reset"
                     class="bg-red rounded-md px-6 py-2 text-white-900 font-semibold mr-3">Batal</button>
-                <button type="submit"
-                    class="bg-blue-600 rounded-md px-6 py-2 text-white-900 font-semibold">Tambahkan</button>
+                <x-modal>
+                    <x-slot name="trigger">
+                        <div class="bg-blue-600 rounded-md px-6 py-2 text-white-900 font-semibold">Tambahkan</div>
+                    </x-slot>
+                    <x-slot name="title">
+                        Tambah Anggota
+                    </x-slot>
+                    <x-slot name="text">
+                        <p>Apakah kamu ingin menambahkan data anggota tersebut?</p>
+                    </x-slot>
+                    <x-slot name="action">
+                        <button type="submit" class="text-black">Tambahkan</button>
+                    </x-slot>
+                </x-modal>
             </div>
         </form>
     </div>
