@@ -22,10 +22,11 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
+// gk jalan
 Route::get('/google/sign-in', [AuthGoogleController::class, 'auth'])->name('auth.google');
 Route::get('/auth/google/callback', [AuthGoogleController::class, 'callback'])->name('auth.google.callback');
 
-Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
     Route::get('/anggota', [AnggotaController::class, 'all'])->name('anggota');
     Route::get('/divisi', [DivisiController::class, 'show'])->name('divisi');
@@ -41,14 +42,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('/pasif', [AnggotaController::class, 'passive'])->name('pasif');
         Route::get('/{member}', [AnggotaController::class, 'detail'])->name('detail');
     });
-
-    // Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
-    //     require_once __DIR__ . '/role/admin.php';
-    // });
-
-    // Route::group(['middleware' => 'role:user', 'prefix' => 'user', 'as' => 'user.'], function () {
-    //     require_once __DIR__ . '/role/user.php';
-    // });
 });
 
 require_once __DIR__ . '/jetstream.php';
