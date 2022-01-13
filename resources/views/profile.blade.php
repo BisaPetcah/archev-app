@@ -22,6 +22,10 @@
                 </div>
                 @if ($member)
                     <div class="mt-3">
+                        <h4 class="font-semibold text-orange-200">Status:</h4>
+                        <h5 class="font-semibold mt-2">{{ ucwords($member->status) }}</h5>
+                    </div>
+                    <div class="mt-3">
                         <h4 class="font-semibold text-orange-200">Angkatan:</h4>
                         <h5 class="font-semibold mt-2">{{ $member->generation->name }}</h5>
                     </div>
