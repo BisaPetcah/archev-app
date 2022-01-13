@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -12,10 +13,19 @@ class UserProfileController extends Controller
 {
     function show(Request $request)
     {
-        return view('profile', [
+        $data = [
             'request' => $request,
             'user' => $request->user(),
-        ]);
+        ];
+
+        $member = Member::firstWhere('email', Auth::user()->email);
+
+        if ($member) {
+            $data['member'] = $member;
+            $member->update(['user_id' => Auth::id()]);
+        }
+
+        return view('profile', $data);
     }
 
     function update(Request $request)

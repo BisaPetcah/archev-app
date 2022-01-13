@@ -4,7 +4,7 @@
     </x-slot>
     <div class="container px-10 flex flex-row w-full justify-between space-x-10 mt-10">
         <div class="bg-white-900 w-full rounded-lg shadow-lg flex flex-col items-center">
-            <img src="{{ $user->profile_photo_path ? asset('storage/' . $user->profile_photo_path) : 'https://ui-avatars.com/api/?name=' . urlencode($user->name) . '&color=7F9CF5&background=EBF4FF' }}"
+            <img src="{{ $member->photo_path ? asset('storage/' . $member->photo_path) : 'https://ui-avatars.com/api/?name=' . urlencode($user->name) . '&color=7F9CF5&background=EBF4FF' }}"
                 alt="" class="rounded-full w-24 my-7">
             <div class="border-2 w-full"></div>
             <div class="w-full px-10 py-5">
@@ -20,6 +20,20 @@
                     <h4 class="font-semibold text-orange-200">Name Pengguna:</h4>
                     <h5 class="font-semibold mt-2">{{ $user->username }}</h5>
                 </div>
+                @if ($member)
+                    <div class="mt-3">
+                        <h4 class="font-semibold text-orange-200">Status:</h4>
+                        <h5 class="font-semibold mt-2">{{ ucwords($member->status) }}</h5>
+                    </div>
+                    <div class="mt-3">
+                        <h4 class="font-semibold text-orange-200">Angkatan:</h4>
+                        <h5 class="font-semibold mt-2">{{ $member->generation->name }}</h5>
+                    </div>
+                    <div class="mt-3">
+                        <h4 class="font-semibold text-orange-200">Divisi:</h4>
+                        <h5 class="font-semibold mt-2">{{ $member->division->name }}</h5>
+                    </div>
+                @endif
             </div>
         </div>
         <div class="bg-white-900 w-full rounded-lg shadow-lg flex flex-col items-center">
