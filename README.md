@@ -14,7 +14,11 @@ typing commands below in your terminal.
 1. `composer install`
 2. `npm install`
 3. `npm run dev`
-4. `php artisan migrate`
+4. copy file .env.example and then paste with file name .env
+5. `php artisan key:generate`
+6. `php artisan migrate`
+7. `php artisan serve`
+8. open your app in browser
 
 ## About Laravel
 
