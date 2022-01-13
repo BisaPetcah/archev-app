@@ -16,6 +16,7 @@ class UserProfileController extends Controller
         $data = [
             'request' => $request,
             'user' => $request->user(),
+            'member' => null,
         ];
 
         $member = Member::firstWhere('email', Auth::user()->email);
