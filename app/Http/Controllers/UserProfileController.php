@@ -13,16 +13,15 @@ class UserProfileController extends Controller
 {
     function show(Request $request)
     {
+        $member = Member::firstWhere('email', Auth::user()->email);
         $data = [
             'request' => $request,
             'user' => $request->user(),
-            'member' => null,
+            'member' => $member,
         ];
 
-        $member = Member::firstWhere('email', Auth::user()->email);
 
         if ($member) {
-            $data['member'] = $member;
             $member->update(['user_id' => Auth::id()]);
         }
 
