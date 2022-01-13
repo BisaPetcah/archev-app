@@ -34,10 +34,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::group(['prefix' => 'anggota', 'as' => 'anggota.'], function () {
         Route::post('/', [AnggotaController::class, 'store'])->name('store');
-        Route::get('/tambah', [AnggotaController::class, 'create'])->name('create');
-        Route::get('/edit/{member}', [AnggotaController::class, 'edit'])->name('edit');
-        Route::put('/{member}', [AnggotaController::class, 'update'])->name('update');
-        Route::delete('/{member}', [AnggotaController::class, 'destroy'])->name('delete');
+        Route::get('/tambah', [AnggotaController::class, 'create'])->name('create')->middleware('role:admin');
+        Route::get('/edit/{member}', [AnggotaController::class, 'edit'])->name('edit')->middleware('role:admin');
+        Route::put('/{member}', [AnggotaController::class, 'update'])->name('update')->middleware('role:admin');
+        Route::delete('/{member}', [AnggotaController::class, 'destroy'])->name('delete')->middleware('role:admin');
         Route::get('/aktif', [AnggotaController::class, 'active'])->name('aktif');
         Route::get('/pasif', [AnggotaController::class, 'passive'])->name('pasif');
         Route::get('/{member}', [AnggotaController::class, 'detail'])->name('detail');
