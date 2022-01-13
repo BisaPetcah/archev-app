@@ -2,12 +2,14 @@
     <x-slot name="title">
         Anggota
     </x-slot>
-    <div class="flex flex-row mt-8 items-center h-12">
-        <a href="{{ route('anggota.create') }}"
-            class="bg-orange-400 text-white-900 rounded-lg px-5 text-sm h-full items-center flex shadow-md hover:shadow-none transform duration-300"><i
-                class="fas fa-plus mr-2"></i>Tambah
-            Anggota</a>
-    </div>
+    @if (Auth::user()->is_admin)
+        <div class="flex flex-row mt-8 items-center h-12">
+            <a href="{{ route('anggota.create') }}"
+                class="bg-orange-400 text-white-900 rounded-lg px-5 text-sm h-full items-center flex shadow-md hover:shadow-none transform duration-300"><i
+                    class="fas fa-plus mr-2"></i>Tambah
+                Anggota</a>
+        </div>
+    @endif
     <div class="mt-4 bg-white-900 rounded-xl shadow-lg text-center p-4">
         <table class="compact stripe" id="table-anggota">
             <thead>
@@ -17,7 +19,9 @@
                     <th class="w-10">Divisi</th>
                     <th>Angkatan</th>
                     <th>Status</th>
-                    <th class="w-32">Aksi</th>
+                    @if (Auth::user()->is_admin)
+                        <th class="w-32">Aksi</th>
+                    @endif
                 </tr>
             </thead>
         </table>
@@ -62,12 +66,14 @@
                             data: 'status',
                             name: 'status'
                         },
-                        {
+                        @if (Auth::user()->is_admin)
+                            {
                             data: 'aksi',
                             name: 'aksi',
                             orderable: false,
                             searchable: false
-                        },
+                            },
+                        @endif
                     ]
                 });
             });
